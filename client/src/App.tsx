@@ -1,12 +1,16 @@
-
+import Header from "./components/header/Header";
+import MessageBox from "./components/MessageBox/MessageBox";
 
 function App() {
-
   return (
     <>
-    <h1>hello</h1>
+    <Header/>
+    <main className="w-full h-screen ">
+      
+      <MessageBox/>
+    </main>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

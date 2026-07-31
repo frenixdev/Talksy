@@ -1,6 +1,7 @@
 import app from "./app";
 import { createServer } from "node:http";
 import { Server } from "socket.io";
+import { registerSocket } from "./socket";
 
 const httpServer = createServer(app);
 const SERVER_PORT = 3000;
@@ -10,6 +11,6 @@ const io = new Server(httpServer, {
   },
 });
 
-httpServer.listen(SERVER_PORT, ()=> console.log("Chat app is ready! "))
+httpServer.listen(SERVER_PORT, () => console.log("Chat app is ready! "));
 
-export default io
+registerSocket(io);

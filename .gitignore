@@ -1,0 +1,33 @@
+# Dependencies and Builds
+node_modules/
+dist/
+build/
+bin/
+obj/
+
+# Environment Variables and Secrets
+.env
+.env.local
+.env.*.local
+*.Key
+*.pem
+I_SECRET_KEYS.txt
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+[Dd]ownloads/
+
+# IDE and Editor Configs
+.idea/
+.vscode/
+*.suo
+*.user
+*.Log
+*.swp
+
+# Logs and Run-times
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*

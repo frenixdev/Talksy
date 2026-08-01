@@ -13,12 +13,13 @@ function App() {
     getUser: s.getUser,
     disconnectSocket: s.disconnect
   })))
-
+  useEffect(getUser, [])
   useEffect(()=> {
+    if(!user) return
     initalizeSocket()
-    getUser()
+
     return disconnectSocket
-  },[])
+  },[user])
   return (
     <>
     <div className="bg-black/40 fixed -z-10 inset-0"></div>

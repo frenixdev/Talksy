@@ -92,11 +92,6 @@ const useChatStore = create<ChatStore>((set, get) => ({
     });
   },
   disconnect: () => {
-    socket.emit("leave", {
-      type: "event",
-      user: get().user,
-      Event: "leave"
-    })
     socket.disconnect();
   },
 }));

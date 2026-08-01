@@ -1,8 +1,17 @@
+import { useShallow } from "zustand/shallow";
+import { useChatStore } from "../../store/chat.store";
 import Input from "../Input/Input";
+import { useState } from "react";
 
 const UserName = () => {
-  
-  const setNameHandler = (e: React.ChangeEvent<HTMLInputElement>) => {};
+  const [name , setName] = useState("")
+  const { setUser } = useChatStore(useShallow(s =>({
+    setUser: s.setUser,
+  })))
+
+  const setNameHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value)
+  };
   return (
     <div className="fixed z-999 bg-black/70 inset-0 grid place-items-center">
       <div className="max-w-100 w-4/5 border border-violet-700 rounded-md p-3 bg-purple-950/60 space-y-5">
@@ -10,9 +19,14 @@ const UserName = () => {
           Enter username
         </h2>
         <div className="w-full px-5">
-          <Input className="w-full" handler={setNameHandler} />
+          <Input className="w-full"
+          onChange={setNameHandler}
+          />
         </div>
-        <button className="px-10 py-2 bg-violet-700/80 rounded-3xl text-md font-semibold mx-auto block border cursor-pointer hover:bg-violet-600 active:bg-violet-900 transition-all duration-150 ease-in-out border-violet-400">Join</button>
+        <button
+        onClick={()=> setUser(name)}
+        className="px-10 py-2 bg-violet-700/80 rounded-3xl text-md font-semibold mx-auto block border cursor-pointer hover:bg-violet-600 active:bg-violet-900 transition-all duration-150 ease-in-out border-violet-400">Join</button>
+
       </div>
     </div>
   );

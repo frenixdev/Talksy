@@ -2,7 +2,7 @@ import type React from "react";
 import type { HtmlHTMLAttributes } from "react";
 interface Props extends HtmlHTMLAttributes<HTMLInputElement> {
   val?: string;
-  handler: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handler?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 const Input = ({ val, handler, className, ...props}: Props) => {
   return (

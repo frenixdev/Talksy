@@ -4,7 +4,7 @@ const Header = () => {
   const user = "frenix";
   const username = user;
   return (
-    <header className="flex  justify-between p-3 md:p-3 bg-stone-800">
+    <header className="relative top-0 flex  justify-between p-3 md:p-3">
       <div className="left flex gap-5 ">
         <div className="md:w-15 md:h-15 w-10 h-10">
           <img src={logo} alt="logo" />

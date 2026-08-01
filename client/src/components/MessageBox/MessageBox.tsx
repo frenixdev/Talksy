@@ -12,6 +12,7 @@ const MessageBox = () => {
     setMsg(e.target.value);
   };
   const handlerBtnClick = ()=>{
+    if(!msg) return
     send(msg)
     setMsg("")
   }

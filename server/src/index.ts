@@ -7,7 +7,12 @@ const httpServer = createServer(app);
 const SERVER_PORT = 3000;
 const io = new Server(httpServer, {
   cors: {
-    origin: "*",
+    origin: [
+      "http://localhost:3000",
+      "http://localhost:5173",
+      "http://localhost:5174",
+      "https://talksy.frenix.space"
+    ]
   },
 });
 

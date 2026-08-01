@@ -1,8 +1,12 @@
+import { useShallow } from "zustand/shallow";
 import logo from "../../assets/meetme.png";
+import { useChatStore } from "../../store/chat.store";
 
 const Header = () => {
-  const user = "frenix";
-  const username = user;
+  const {typingUsers, user} = useChatStore(useShallow(s =>({
+    user: s.user,
+    typingUsers: s.typingEvent
+  })))
   return (
     <header className="relative top-0 flex  justify-between p-3 md:p-3">
       <div className="left flex gap-5 ">
@@ -14,7 +18,7 @@ const Header = () => {
             Talksy
           </p>
           <p className="text-xs ml-2 italic text-stone-300">
-            {user ? `${user} is typing...` : ""}
+            {typingUsers.length ? `${typingUsers.join(" and ")} is typing...` : ""}
           </p>
         </div>
       </div>
@@ -26,7 +30,7 @@ const Header = () => {
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIi3UeJL4nT89uRQbd2XpeTDGpnNarwrqVLyBtVuOa9jSMVxkt28coOYE&s=10"
           />
         </div>
-        <p className="font-bold text-stone-300 text-sm ">{username}</p>
+        <p className="font-bold text-stone-300 text-sm ">{user}</p>
       </div>
     </header>
   );

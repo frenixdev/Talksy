@@ -1,11 +1,20 @@
 import { useState } from "react";
 import { GoPaperAirplane } from "react-icons/go";
+import { useChatStore } from "../../store/chat.store";
+import { useShallow } from "zustand/shallow";
 
 const MessageBox = () => {
   const [msg, setMsg] = useState("");
+  const {send} = useChatStore(useShallow(s =>({
+    send: s.send
+  })))
   const onchangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMsg(e.target.value);
   };
+  const handlerBtnClick = ()=>{
+    send(msg)
+    setMsg("")
+  }
   return (
     <div className="  flex px-2 items-center justify-center gap-5 ">
       <input
@@ -16,7 +25,9 @@ const MessageBox = () => {
         onChange={onchangeHandler}
       />
 
-      <button className="bg-purple-600 hover:bg-purple-800 transition-all duration-150 ease-in-out rounded-full overflow-hidden h-full aspect-square text-2xl text-zinc-200 flex items-center justify-center cursor-pointer ">
+      <button
+      onClick={handlerBtnClick}
+      className="bg-purple-600 hover:bg-purple-800 transition-all duration-150 ease-in-out rounded-full overflow-hidden h-full aspect-square text-2xl text-zinc-200 flex items-center justify-center cursor-pointer ">
         <GoPaperAirplane className="tracking-tighter" />
       </button>
     </div>
